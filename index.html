@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>angular</title>
+        <style type="text/css">
+			*{margin:0;padding:0;font-family: "microsoft yahei"}
+			body{
+				background: #efefef;
+			}
+			.pink{
+				background: pink;
+			}
+			.aqua{
+				background: #abcdef;
+			}
+			.ccc{
+				background: #ccc;
+			}
+			.ddd{
+				background: #ddd;
+			}
+			.m-r{
+				margin-right: 5px;
+			}
+			button{
+				height: 28px;
+				padding: 0 18px;
+				background: none;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+				line-height: 28px;
+				cursor: pointer;
+				transition: all 0.3s;
+				outline: none;
+			}
+			button:hover{
+				background: #dedede;
+			}
+			button:active{
+				background: #ccc;
+			}
+			input{
+				outline: none;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+				height: 28px;
+				line-height: 28px;
+				padding-left: 5px;
+			}
+			i{
+				height: 5px;
+				margin: 3px 0;
+				display: block;
+			}
+			.row{
+				width: 80%;
+				max-width: 1300px;
+				padding: 15px;
+				box-shadow: 0 1px 2px 1px #ddd;
+				background: snow;
+				margin: 10px auto;
+				border-radius: 5px;
+			}
+        </style>
+        <script type="text/javascript" src="angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+    </head>
+    <body>
+    	<div class="row" ng-controller="myCtrl07">
+    		操作： <button ng-checked="selectAll" ng-click="all(selectAll)">全选/取消</button>
+    		<i></i>
+    		<input type="checkbox" ng-click="all(selectAll)" ng-checked="selectAll">
+    		<i></i>
+    		结果：
+    		<i></i>
+			<input type="checkbox" ng-checked="selectAll" ng-click="check()" ng-model="n[0]">
+			<input type="checkbox" ng-checked="selectAll" ng-click="check()" ng-model="n[1]">
+			<input type="checkbox" ng-checked="selectAll" ng-click="check()" ng-model="n[2]">
+			<input type="checkbox" ng-checked="selectAll" ng-click="check()" ng-model="n[3]">
+			<input type="checkbox" ng-checked="selectAll" ng-click="check()" ng-model="n[4]">
+			<i></i>
+			n1:{{n[0]}}
+			n2:{{n[1]}}
+			n3:{{n[2]}}
+			n4:{{n[3]}}
+			n5:{{n[4]}}
+			<i></i>
+			m:{{selectAll}}
+		</div>
+    	<div class="row">
+    		Your name: <input type="text" ng-model="yourname" placeholder="world">
+    		<i></i>
+    		Hello {{yourname || 'huangmengmeng'}}!
+    	</div>
+    	<div class="row">
+    		name: {{name}}
+    	</div>
+    	<div class="row" ng-controller="myCtrl01">
+    		name: {{person.name}}
+    		<i></i>
+    		new name:{{name}}
+    		<i></i>
+    		factory data:{{initData}}
+    	</div>
+    	<div class="row" ng-controller="myCtrl02">
+    		自定义指令（template）：
+    		<i></i>
+    		<my-directive class="pink"></my-directive>
+    		<i></i>
+    		<span my-directive class="aqua"></span>
+    		<i></i>
+    		<span class="ccc my-directive"></span>
+    		<i></i>
+    		<!-- directive:my-directive --> *注释写法
+    	</div>
+    	<div class="row">
+    		自定义指令（templateUrl）：
+    		<i></i>
+    		<span link-directive></span>
+    	</div>
+    	<div class="row" ng-controller="myCtrl03">
+    		当前时间：{{time}}
+    	</div>	
+		<div class="row" ng-controller="myCtrl04">
+			<audio id="audio" src="c.mp3"></audio>
+			播放/暂停（状态）： <button ng-show='!playing' ng-click="play()">播放</button> <button ng-show='playing' ng-click="stop()">暂停</button> <button ng-click="end()">结束</button>
+			<i></i>
+			调整播放速度：<button ng-class="{ddd:speed=='1'}" ng-click="setSpeed(1)">正常</button> <button ng-class="{ddd:speed=='2'}" ng-click="setSpeed(2)">快速</button> <button ng-class="{ddd:speed=='0.5'}" ng-click="setSpeed(0.5)">慢速</button>
+		</div>
+		<div class="row" ng-controller="myCtrl05">
+			操作：<button ng-click="add(1)">Add（1）</button> <button ng-click="sub(1)">Sub（1）</button> <button ng-click="add(2)">Add（2）</button> <button ng-click="sub(2)">Sub（2）</button>
+			<i></i>
+			结果：<input type="text" ng-model="result">
+		</div>
+		<div class="row" ng-controller="myCtrl06">
+			Tab：<button class="m-r" ng-repeat="list in lists" ng-class="{ddd:n==$index}" ng-click="changeTab($index,list)">{{list.name}}..{{$index}}</button>
+			<i></i>
+			ID：<button>{{ID}}</button>
+		</div>
+    </body>
+</html>
